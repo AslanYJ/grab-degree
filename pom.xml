@@ -11,6 +11,8 @@
         <module>grab-degree-common</module>
         <module>grab-degree-cms-service</module>
         <module>grab-degree-generator</module>
+        <module>grab-degree-topic-course-service</module>
+        <module>grab-degree-topic-course-api</module>
     </modules>
 
     <properties>

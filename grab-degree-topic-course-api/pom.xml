@@ -9,25 +9,13 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>grab-degree-common</artifactId>
-
+    <artifactId>grab-degree-topic-course-api</artifactId>
     <dependencies>
         <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>com.alibaba</groupId>
-            <artifactId>fastjson</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>com.baomidou</groupId>
-            <artifactId>mybatis-plus-boot-starter</artifactId>
+            <groupId>com.yjlan</groupId>
+            <artifactId>grab-degree-common</artifactId>
+            <version>1.0.0</version>
         </dependency>
     </dependencies>
-
-
 
 </project>
