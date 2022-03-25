@@ -39,6 +39,24 @@ public class ResponseResult<T> implements Serializable {
         return result;
     }
     
+    public static <T> ResponseResult<T> success() {
+        @SuppressWarnings("unchecked")
+        ResponseResult<T> result = new ResponseResult();
+        result.setData(null);
+        result.setMessage(ResponseCode.SUCCESS.getDesc());
+        result.setCode(ResponseCode.SUCCESS.getCode());
+        return result;
+    }
+    
+    public static <T> ResponseResult<T> fail() {
+        @SuppressWarnings("unchecked")
+        ResponseResult<T> result = new ResponseResult();
+        result.setCode(ResponseCode.FAIL.getCode());
+        result.setMessage(ResponseCode.FAIL.getDesc());
+        result.setData(null);
+        return result;
+    }
+    
     
     public static <T> ResponseResult<T> fail(Integer code, String message) {
         return new ResponseResult<>(code,message);
@@ -51,5 +69,10 @@ public class ResponseResult<T> implements Serializable {
         result.setMessage(message);
         result.setData(t);
         return result;
+    }
+    
+    
+    public boolean isSuccess() {
+        return this.code == ResponseCode.SUCCESS.getCode();
     }
 }

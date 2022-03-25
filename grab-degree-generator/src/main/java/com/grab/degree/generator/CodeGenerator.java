@@ -105,7 +105,7 @@ public class CodeGenerator {
     
         mpg.setPackageInfo(pc);
         mpg.setPackageInfo(pc);
-        pc.setEntity("model" + "." + "entity" + "." + moduleName);
+        pc.setEntity("model" + "." + "entity");
         // 自定义配置
         InjectionConfig cfg = new InjectionConfig() {
             @Override
@@ -162,7 +162,8 @@ public class CodeGenerator {
 //        strategy.setSuperEntityClass("com.baomidou.ant.common.BaseEntity");
         //【实体】是否为lombok模型（默认 false）
         strategy.setEntityLombokModel(true);
-        strategy.setRestControllerStyle(true);
+        strategy.setControllerMappingHyphenStyle(false);
+        strategy.setRestControllerStyle(false);
         // 公共父类
 //        strategy.setSuperControllerClass("com.baomidou.ant.common.BaseController");
         // 写于父类中的公共字段
