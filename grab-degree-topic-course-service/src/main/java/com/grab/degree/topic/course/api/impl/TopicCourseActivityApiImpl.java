@@ -2,14 +2,18 @@ package com.grab.degree.topic.course.api.impl;
 
 import java.time.LocalDateTime;
 import java.time.ZoneOffset;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.annotation.Resource;
 
 import org.apache.dubbo.config.annotation.DubboService;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.grab.degree.common.redis.RedisCache;
 import com.grab.degree.common.resp.ResponseResult;
 import com.grab.degree.topic.course.api.TopicCourseActivityApi;
+import com.grab.degree.topic.course.constants.CacheKeyConstants;
 import com.grab.degree.topic.course.dao.TopicCourseActivityDAO;
 import com.grab.degree.topic.course.domain.dto.AddNewActivityDTO;
 import com.grab.degree.topic.course.domain.entity.TopicCourseActivity;
@@ -25,6 +29,9 @@ public class TopicCourseActivityApiImpl implements TopicCourseActivityApi {
     @Resource
     private TopicCourseActivityDAO topicCourseActivityDAO;
     
+    @Resource
+    private RedisCache redisCache;
+    
     @Transactional(rollbackFor = Exception.class)
     @Override
     public ResponseResult<Void> addNewActivity(AddNewActivityDTO addNewActivityDTO) {
@@ -34,9 +41,22 @@ public class TopicCourseActivityApiImpl implements TopicCourseActivityApi {
                 .setStartTime(LocalDateTime.ofEpochSecond(addNewActivityDTO.getStartTime(), 0, ZoneOffset.ofHours(8)))
                 .setEndTime(LocalDateTime.ofEpochSecond(addNewActivityDTO.getEndTime(),0,ZoneOffset.ofHours(8)));
         boolean saveResult = topicCourseActivityDAO.save(topicCourseActivity);
+        // 保存课程数据到redis库中
         if (!saveResult) {
             return ResponseResult.fail();
         }
+        saveCourseInfoToRedis(topicCourseActivity.getId(),addNewActivityDTO);
         return ResponseResult.success();
+    }
+    
+    private void saveCourseInfoToRedis(Long id, AddNewActivityDTO addNewActivityDTO) {
+        String key = CacheKeyConstants.TOPIC_COURSE_ACTIVITY_COURSE_INFO + id;
+        Map<String,String> courseInfoMap = new HashMap<>(5);
+        courseInfoMap.put("courseId",String.valueOf(addNewActivityDTO.getCourseId()));
+        courseInfoMap.put("courseName",addNewActivityDTO.getCourseName());
+        courseInfoMap.put("courseHour",String.valueOf(addNewActivityDTO.getCourseHour()));
+        courseInfoMap.put("minAge",String.valueOf(addNewActivityDTO.getMinAge()));
+        courseInfoMap.put("maxAge",String.valueOf(addNewActivityDTO.getMaxAge()));
+        redisCache.hPutAll(key,courseInfoMap);
     }
 }

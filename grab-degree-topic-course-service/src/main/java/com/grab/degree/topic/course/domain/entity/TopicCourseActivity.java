@@ -51,6 +51,12 @@ public class TopicCourseActivity implements Serializable {
     private LocalDateTime gmtCreate;
 
     private LocalDateTime gmtUpdate;
+    
+    /**
+     * 活动的状态
+     * {@link com.grab.degree.topic.course.enums.TopicCourseActivityStatusEnum}
+     */
+    private Integer status;
 
 
 }

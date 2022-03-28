@@ -31,6 +31,11 @@ spring:
         username: nacos
         password: nacos
         namespace: yjlan
+  redis:
+    host: 127.0.0.1
+    port: 6379
+    password:
+    timeout: 3000
 
 dubbo:
   registry:
@@ -53,3 +58,4 @@ mybatis-plus:
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
     map-underscore-to-camel-case: true
   mapper-locations: classpath:mapper/*.xml
+

@@ -17,6 +17,14 @@ public class AddNewActivityDTO implements Serializable {
     
     private final Long courseId;
     
+    private final String courseName;
+    
+    private final Double courseHour;
+    
+    private final Integer minAge;
+    
+    private final Integer maxAge;
+    
     private final Integer degreeNum;
     
     /**
