@@ -2,7 +2,10 @@ package com.grab.degree.topic.course.config;
 
 import java.util.Objects;
 
+import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 /**
@@ -26,5 +29,14 @@ public class ShardJedisPoolConfig {
             shardJedisConfig.setMinIdle(0);
         }
         this.shardJedisConfig = shardJedisConfig;
+    }
+
+
+
+
+    @Bean(destroyMethod = "destroy")
+    @ConditionalOnMissingBean
+    public ShardJedisManager shardJedisManager() {
+        return new ShardJedisManager(shardJedisConfig);
     }
 }
