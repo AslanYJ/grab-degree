@@ -59,3 +59,22 @@ mybatis-plus:
     map-underscore-to-camel-case: true
   mapper-locations: classpath:mapper/*.xml
 
+xxl:
+  job:
+    admin:
+      addresses: http://localhost:13000/xxl-job-admin
+    executor:
+      appname: topic-course
+
+grab:
+  degree:
+    jedis:
+      maxTotal: 10
+      maxIdel: 10
+      minIdel: 1
+      timeout: 3000
+      configs:
+        - addr: 127.0.0.1:6379
+          password:
+        - addr: 10.41.170.165:6389
+          password: IFLYtek@2019
