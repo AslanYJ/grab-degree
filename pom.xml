@@ -13,6 +13,10 @@
         <module>grab-degree-generator</module>
         <module>grab-degree-topic-course-service</module>
         <module>grab-degree-topic-course-api</module>
+        <module>user-center-service</module>
+        <module>user-center-api</module>
+        <module>user-credit-hour-service</module>
+        <module>user-credit-hour-api</module>
     </modules>
 
     <properties>
