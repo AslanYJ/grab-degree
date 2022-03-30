@@ -15,4 +15,9 @@ public interface TopicCourseActivityService {
      * @return 返回所有活动
      */
     List<TopicActivityInfoVO> listAllActivity();
+    
+    /**
+     * 初始化学位数量
+     */
+    void initDegreeNum();
 }

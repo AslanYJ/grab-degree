@@ -47,9 +47,15 @@ public class ShardJedisManager implements DisposableBean {
         return jedisPools.get(index).getResource();
     }
 
+    public Jedis getJedisByHashKey(int hashKey) {
+        hashKey = Math.abs(hashKey);
+        int index = (hashKey % getRedisCount());
+        return getJedisByIndex(index);
+    }
+    
     public Jedis getJedisByHashKey(long hashKey) {
         hashKey = Math.abs(hashKey);
-        int index = (int) (hashKey % getRedisCount());
+        int index = (int)(hashKey % getRedisCount());
         return getJedisByIndex(index);
     }
 

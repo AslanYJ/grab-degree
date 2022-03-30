@@ -30,6 +30,16 @@ public class TopicActivityInfoVO {
      */
     private Integer degreeNum;
     
+    private Integer hasGrabDegreeNum;
+    
+    private Integer remainingGrabDegreeNum;
+    
     private Integer status;
+    
+    public TopicActivityInfoVO() {
+        this.degreeNum = 0;
+        this.hasGrabDegreeNum = 0;
+        this.remainingGrabDegreeNum = 0;
+    }
     
 }

@@ -2,7 +2,6 @@ package com.grab.degree.topic.course.config;
 
 import java.util.Objects;
 
-import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
@@ -14,11 +13,11 @@ import org.springframework.context.annotation.Configuration;
  */
 @Configuration
 @EnableConfigurationProperties(ShardJedisConfig.class)
-public class ShardJedisPoolConfig {
+public class ShardJedisPoolConfiguration {
     
     private final ShardJedisConfig shardJedisConfig;
     
-    public ShardJedisPoolConfig(ShardJedisConfig shardJedisConfig) {
+    public ShardJedisPoolConfiguration(ShardJedisConfig shardJedisConfig) {
         if (Objects.isNull(shardJedisConfig.getMaxTotal())) {
             shardJedisConfig.setMaxTotal(8);
         }
@@ -32,11 +31,16 @@ public class ShardJedisPoolConfig {
     }
 
 
-
-
+    
     @Bean(destroyMethod = "destroy")
     @ConditionalOnMissingBean
     public ShardJedisManager shardJedisManager() {
         return new ShardJedisManager(shardJedisConfig);
+    }
+    
+    @Bean
+    @ConditionalOnMissingBean
+    public IShardJedisClient shardJedisClient(ShardJedisManager shardJedisManager) {
+        return new ShardJedisClient(shardJedisManager);
     }
 }
