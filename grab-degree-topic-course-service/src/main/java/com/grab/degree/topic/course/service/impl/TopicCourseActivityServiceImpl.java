@@ -132,7 +132,6 @@ public class TopicCourseActivityServiceImpl implements TopicCourseActivityServic
             Map<String, String> degreeNumMap = new HashMap<>(3);
             degreeNumMap.put(CacheKeyConstants.TOTAL_DEGREE_NUM, map.get(i) + "");
             degreeNumMap.put(CacheKeyConstants.HAS_GRAB_DEGREE_NUM, "0");
-            degreeNumMap.put(CacheKeyConstants.REMAINING_GRAB_DEGREE_NUM, "0");
             hashList.add(degreeNumMap);
             log.info("学位分片 degreeNumMap={}", JSON.toJSONString(degreeNumMap));
         }
@@ -173,8 +172,6 @@ public class TopicCourseActivityServiceImpl implements TopicCourseActivityServic
                 for (Map<String, String> stringStringMap : mapList) {
                     vo.setHasGrabDegreeNum(vo.getHasGrabDegreeNum() +
                             Integer.parseInt(stringStringMap.get(CacheKeyConstants.HAS_GRAB_DEGREE_NUM)));
-                    vo.setRemainingGrabDegreeNum(vo.getRemainingGrabDegreeNum() +
-                            Integer.parseInt(stringStringMap.get(CacheKeyConstants.REMAINING_GRAB_DEGREE_NUM)));
                 }
             }
             activityInfoVOList.add(vo);

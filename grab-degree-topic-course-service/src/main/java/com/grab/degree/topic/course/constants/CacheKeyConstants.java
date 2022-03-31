@@ -26,8 +26,5 @@ public class CacheKeyConstants {
      */
     public static final String HAS_GRAB_DEGREE_NUM = "hasGrabDegreeNum";
     
-    /**
-     * 剩余抢购数量
-     */
-    public static final String REMAINING_GRAB_DEGREE_NUM = "remainingGrabDegreeNum";
+    
 }

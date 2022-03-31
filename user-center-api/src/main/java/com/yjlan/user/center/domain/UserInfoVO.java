@@ -10,4 +10,14 @@ import java.io.Serializable;
  */
 @Data
 public class UserInfoVO implements Serializable {
+    
+    private Long userId;
+    
+    private String fullName;
+    
+    private String nickName;
+    
+    private Integer age;
+    
+    
 }
