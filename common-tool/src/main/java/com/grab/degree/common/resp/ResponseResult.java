@@ -61,6 +61,7 @@ public class ResponseResult<T> implements Serializable {
     public static <T> ResponseResult<T> fail(Integer code, String message) {
         return new ResponseResult<>(code,message);
     }
+
     
     public static <T> ResponseResult<T> fail(Integer code, String message, T t) {
         @SuppressWarnings("unchecked")

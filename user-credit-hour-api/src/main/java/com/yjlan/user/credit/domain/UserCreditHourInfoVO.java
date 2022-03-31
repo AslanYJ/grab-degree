@@ -27,4 +27,9 @@ public class UserCreditHourInfoVO implements Serializable {
      * 已用的学时
      */
     private Integer usedCreditHour;
+
+    /**
+     * 冻结学时
+     */
+    private Integer freezeCreditHour;
 }

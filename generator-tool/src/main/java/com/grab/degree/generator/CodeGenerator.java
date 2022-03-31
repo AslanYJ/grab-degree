@@ -33,7 +33,7 @@ public class CodeGenerator {
      */
     private final static String mapperSuffix = "Mapper";
     private final static String mappers = "mapper";
-    private final static String mapperPackageName = "dao";
+    private final static String mapperPackageName = "mapper";
     /**
      * 模块包名
      */
@@ -72,7 +72,7 @@ public class CodeGenerator {
 
         // 全局配置
         GlobalConfig gc = new GlobalConfig();
-        String projectPath = System.getProperty("user.dir") + "/grab-degree-generator";
+        String projectPath = System.getProperty("user.dir") + "/generator-tool";
         gc.setOutputDir(projectPath + "/src/main/java");
         gc.setIdType(IdType.ASSIGN_ID);
         gc.setAuthor(author);

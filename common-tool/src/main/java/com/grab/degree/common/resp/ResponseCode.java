@@ -15,7 +15,8 @@ public enum ResponseCode {
     /**
      * 失败
      */
-    FAIL(2000, "处理失败");
+    FAIL(2000, "处理失败"),
+    CHECK_FAIL(3000,"参数校验失败");
     
     private final int code;
     private final String desc;
