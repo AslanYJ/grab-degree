@@ -20,6 +20,7 @@ import com.grab.degree.topic.course.constants.CacheKeyConstants;
 
 /**
  * 测试redis客户端
+ *
  * @author yjlan
  */
 @SpringBootTest(classes = TopicCourseServiceApplication.class)
@@ -37,25 +38,32 @@ public class TestRedisClient {
         int degreeNum = 10;
         int redisCount = shardJedisClient.getRedisCount();
         // key:redis上的索引，value是对应的数量，其实就是均匀分配到每台实例上
-        Map<Integer,Integer> map = new HashMap<>(16);
-        for(int i = 0; i < degreeNum; i++) {
+        Map<Integer, Integer> map = new HashMap<>(16);
+        for (int i = 0; i < degreeNum; i++) {
             int index = i % redisCount;
             map.putIfAbsent(index, 0);
             map.put(index, map.get(index) + 1);
         }
-    
-        List<Map<String,String>> hashList = new ArrayList<>();
-        for(int i = 0; i < redisCount;i++) {
-            Map<String,String> degreeNumMap = new HashMap<>(3);
-            degreeNumMap.put(CacheKeyConstants.TOTAL_DEGREE_NUM,map.get(i) + "");
-            degreeNumMap.put(CacheKeyConstants.HAS_GRAB_DEGREE_NUM,"0");
-            degreeNumMap.put(CacheKeyConstants.REMAINING_GRAB_DEGREE_NUM,"0");
+        
+        List<Map<String, String>> hashList = new ArrayList<>();
+        for (int i = 0; i < redisCount; i++) {
+            Map<String, String> degreeNumMap = new HashMap<>(3);
+            degreeNumMap.put(CacheKeyConstants.TOTAL_DEGREE_NUM, map.get(i) + "");
+            degreeNumMap.put(CacheKeyConstants.HAS_GRAB_DEGREE_NUM, "0");
             hashList.add(degreeNumMap);
         }
-        shardJedisClient.hsetOnAllRedis(CacheKeyConstants.DEGREE_NUM + 1,hashList);    }
+        shardJedisClient.hsetOnAllRedis(CacheKeyConstants.DEGREE_NUM + 1, hashList);
+    }
     
     @Test
     public void testSet() {
-        shardJedisClient.set("hello","hello");
+        shardJedisClient.set("hello", "hello");
+    }
+    
+    @Test
+    public void testScript() {
+        String script = String.format(CacheKeyConstants.SCRIPT, CacheKeyConstants.DEGREE_NUM + 1);
+        String result = (String)shardJedisClient.eval(1L, script);
+        System.out.println(result);
     }
 }

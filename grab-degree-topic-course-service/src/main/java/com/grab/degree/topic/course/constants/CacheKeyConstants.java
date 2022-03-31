@@ -27,4 +27,15 @@ public class CacheKeyConstants {
     public static final String HAS_GRAB_DEGREE_NUM = "hasGrabDegreeNum";
     
     
+    public static final String SCRIPT = "local degree_num_key = '%s';"
+            + "local totalGrabDegreeNum = redis.call('hget',degree_num_key,'totalGrabDegreeNum') + 0;"
+            + "local hasGrabDegreeNum = redis.call('hget',degree_num_key,'hasGrabDegreeNum') + 0;"
+            + "if(totalGrabDegreeNum > 0)"
+            + "then "
+            + "redis.call('hset',degree_num_key,'totalGrabDegreeNum',totalGrabDegreeNum - 1);"
+            + "redis.call('hset',degree_num_key,'hasGrabDegreeNum',hasGrabDegreeNum +  1);"
+            + "return 'success';"
+            + "else "
+            + "return 'fail';"
+            + "end;";
 }
