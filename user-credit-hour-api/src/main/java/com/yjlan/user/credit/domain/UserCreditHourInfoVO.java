@@ -16,15 +16,15 @@ public class UserCreditHourInfoVO implements Serializable {
     /**
      * 用户总学时
      */
-    private Integer totalUserCreditHour;
+    private Integer totalCreditHour;
     
     /**
      * 可用的用户学时
      */
-    private Integer availableUserCreditHour;
+    private Integer availableCreditHour;
     
     /**
      * 已用的学时
      */
-    private Integer usedUserCreditHour;
+    private Integer usedCreditHour;
 }
