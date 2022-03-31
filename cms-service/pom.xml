@@ -94,7 +94,7 @@
 
         <dependency>
             <groupId>com.yjlan</groupId>
-            <artifactId>grab-degree-common</artifactId>
+            <artifactId>common-tool</artifactId>
             <exclusions>
                 <exclusion>
                     <groupId>org.springframework.boot</groupId>
@@ -109,7 +109,7 @@
         </dependency>
         <dependency>
             <groupId>com.yjlan</groupId>
-            <artifactId>grab-degree-topic-course-api</artifactId>
+            <artifactId>grab-degree-activity-api</artifactId>
             <version>1.0.0</version>
         </dependency>
 

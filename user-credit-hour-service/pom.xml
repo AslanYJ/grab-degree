@@ -91,7 +91,7 @@
 
         <dependency>
             <groupId>com.yjlan</groupId>
-            <artifactId>grab-degree-common</artifactId>
+            <artifactId>common-tool</artifactId>
             <version>1.0.0</version>
         </dependency>
 

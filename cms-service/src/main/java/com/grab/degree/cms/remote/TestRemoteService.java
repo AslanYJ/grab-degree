@@ -1,8 +1,8 @@
 package com.grab.degree.cms.remote;
 
 import com.grab.degree.common.resp.ResponseResult;
-import com.grab.degree.topic.course.api.TestApi;
-import com.grab.degree.topic.course.domain.dto.TestDTO;
+import com.grab.degree.activity.api.TestApi;
+import com.grab.degree.activity.domain.dto.TestDTO;
 import org.apache.dubbo.config.annotation.DubboReference;
 import org.springframework.stereotype.Service;
 

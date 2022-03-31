@@ -1,5 +1,0 @@
-spring:
-  application:
-    name: grab-degree-cms-service
-  profiles:
-    active: local

@@ -9,8 +9,8 @@ import com.grab.degree.cms.dao.CourseInfoDAO;
 import com.grab.degree.cms.domain.dto.AddTopicCourseActivityDTO;
 import com.grab.degree.cms.domain.entity.CourseInfo;
 import com.grab.degree.common.resp.ResponseResult;
-import com.grab.degree.topic.course.api.TopicCourseActivityApi;
-import com.grab.degree.topic.course.domain.dto.AddNewActivityDTO;
+import com.grab.degree.activity.api.TopicCourseActivityApi;
+import com.grab.degree.activity.domain.dto.AddNewActivityDTO;
 
 /**
  * dubbo服务

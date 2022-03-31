@@ -1,8 +1,8 @@
 server:
-  port: 12001
+  port: 12002
 spring:
   application:
-    name: cms
+    name: grab-degree-activity-service
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource
     druid:
@@ -31,25 +31,48 @@ spring:
         username: nacos
         password: nacos
         namespace: yjlan
+  redis:
+    host: 127.0.0.1
+    port: 6379
+    password:
+    timeout: 3000
+
 dubbo:
-  scan:
-    base-packages: com.grab.degree.activity.api
   registry:
-    ## 注册中心
     address: nacos://119.29.164.252:8848
   protocol:
     name: dubbo
-    port: 28091
+    port: 28085
   consumer:
     check: false
   provider:
     threads: 800
     actives: 200
   cloud:
-    subscribed-services: grab-degree-activity-service
+    subscribed-services: user-center-service,user-credit-hour-service
+  scan:
+    base-packages: com.grab.degree.activity.api
 
 mybatis-plus:
   configuration:
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
     map-underscore-to-camel-case: true
   mapper-locations: classpath:mapper/*.xml
+
+xxl:
+  job:
+    admin:
+      addresses: http://localhost:13000/xxl-job-admin
+    executor:
+      appname: topic-course
+
+grab:
+  degree:
+    jedis:
+      maxTotal: 10
+      maxIdel: 10
+      minIdel: 1
+      timeout: 3000
+      configs:
+        - addr: 127.0.0.1:6379
+          password:
