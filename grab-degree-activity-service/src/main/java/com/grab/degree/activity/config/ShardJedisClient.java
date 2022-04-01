@@ -63,7 +63,13 @@ public class ShardJedisClient implements IShardJedisClient {
             return jedis.set(key, value);
         }
     }
-    
+
+    @Override
+    public String set(String key, String value, int seconds) {
+        try (Jedis jedis = shardJedisManager.getJedisByHashKey(key.hashCode())) {
+            return jedis.setex(key, seconds ,value);
+        }    }
+
     @Override
     public String get(String key) {
         try (Jedis jedis = shardJedisManager.getJedisByHashKey(key.hashCode())) {

@@ -111,6 +111,18 @@
             <artifactId>xxl-job-core</artifactId>
             <version>2.3.0</version>
         </dependency>
+
+        <dependency>
+            <groupId>com.yjlan</groupId>
+            <artifactId>user-center-api</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.yjlan</groupId>
+            <artifactId>user-credit-hour-api</artifactId>
+            <version>1.0.0</version>
+        </dependency>
     </dependencies>
 
 </project>

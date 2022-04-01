@@ -32,22 +32,22 @@ public class UserCreditHour implements Serializable {
     /**
      * 总学时
      */
-    private Integer totalCreditHour;
+    private Double totalCreditHour;
 
     /**
      * 可用学时
      */
-    private Integer availableCreditHour;
+    private Double availableCreditHour;
 
     /**
      * 已用学时
      */
-    private Integer usedCreditHour;
+    private Double usedCreditHour;
 
     /**
      * 冻结学时
      */
-    private Integer freezeCreditHour;
+    private Double freezeCreditHour;
 
     private LocalDateTime gmtCreate;
 

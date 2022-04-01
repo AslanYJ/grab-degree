@@ -8,7 +8,7 @@ import org.apache.dubbo.config.annotation.DubboService;
 
 import javax.annotation.Resource;
 
-@DubboService(interfaceClass = UserCreditHourApi.class,retries = 0)
+@DubboService(version = "1.0.0",interfaceClass = UserCreditHourApi.class,retries = 0)
 public class UserCreditHourApiImpl implements UserCreditHourApi {
 
     @Resource

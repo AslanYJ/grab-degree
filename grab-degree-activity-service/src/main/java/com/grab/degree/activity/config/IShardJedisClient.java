@@ -51,6 +51,15 @@ public interface IShardJedisClient {
      * @return 结果
      */
     String set(String key, String value);
+
+    /**
+     * 设置有过期时间的key
+     * @param key key
+     * @param value 值
+     * @param seconds 秒
+     * @return 返回值
+     */
+    String set(String key,String value,int seconds);
     
     /**
      * get一个key值
