@@ -11,6 +11,10 @@ import org.springframework.beans.BeanUtils;
 
 import javax.annotation.Resource;
 
+/**
+ * 实现类
+ * @author yjlan
+ */
 @DubboService(version = "1.0.0",interfaceClass = UserInfoApi.class,retries = 0)
 public class UserInfoApiImpl implements UserInfoApi {
 

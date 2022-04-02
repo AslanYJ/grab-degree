@@ -8,6 +8,10 @@ import org.apache.dubbo.config.annotation.DubboService;
 
 import javax.annotation.Resource;
 
+/**
+ * 实现类
+ * @author yjlan
+ */
 @DubboService(version = "1.0.0",interfaceClass = UserCreditHourApi.class,retries = 0)
 public class UserCreditHourApiImpl implements UserCreditHourApi {
 
@@ -18,10 +22,10 @@ public class UserCreditHourApiImpl implements UserCreditHourApi {
     public ResponseResult<UserCreditHourInfoVO> getUserCreditHour(Long userId) {
         UserCreditHourInfoVO userCreditHourInfoVO = new UserCreditHourInfoVO();
         userCreditHourInfoVO.setUserId(userId);
-        userCreditHourInfoVO.setAvailableCreditHour(100);
-        userCreditHourInfoVO.setTotalCreditHour(100);
-        userCreditHourInfoVO.setUsedCreditHour(0);
-        userCreditHourInfoVO.setFreezeCreditHour(0);
+        userCreditHourInfoVO.setAvailableCreditHour(100.0);
+        userCreditHourInfoVO.setTotalCreditHour(100.0);
+        userCreditHourInfoVO.setUsedCreditHour(0.0);
+        userCreditHourInfoVO.setFreezeCreditHour(0.0);
         return ResponseResult.success(userCreditHourInfoVO);
     }
 }

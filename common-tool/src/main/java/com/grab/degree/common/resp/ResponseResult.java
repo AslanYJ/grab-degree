@@ -48,6 +48,15 @@ public class ResponseResult<T> implements Serializable {
         return result;
     }
     
+    public static <T> ResponseResult<T> success(String message) {
+        @SuppressWarnings("unchecked")
+        ResponseResult<T> result = new ResponseResult();
+        result.setData(null);
+        result.setMessage(ResponseCode.SUCCESS.getDesc());
+        result.setCode(ResponseCode.SUCCESS.getCode());
+        return result;
+    }
+    
     public static <T> ResponseResult<T> fail() {
         @SuppressWarnings("unchecked")
         ResponseResult<T> result = new ResponseResult();
