@@ -76,3 +76,9 @@ grab:
       configs:
         - addr: 127.0.0.1:6379
           password:
+        ## 多个redis实例
+        ## - addr:xxxx
+        ## - password:xxx
+
+rocketmq:
+  name-server: localhost:9876

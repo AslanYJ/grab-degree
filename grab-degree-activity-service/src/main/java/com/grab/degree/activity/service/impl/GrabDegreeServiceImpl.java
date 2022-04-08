@@ -2,7 +2,7 @@ package com.grab.degree.activity.service.impl;
 
 import java.util.concurrent.atomic.AtomicLong;
 
-import com.grab.degree.activity.config.ShardJedisClient;
+import com.grab.degree.activity.config.redis.ShardJedisClient;
 import com.grab.degree.activity.constants.CacheKeyConstants;
 import com.grab.degree.activity.domain.dto.GrabDegreeDTO;
 import com.grab.degree.common.exception.BaseBizException;

@@ -1,4 +1,4 @@
-package com.grab.degree.activity.config;
+package com.grab.degree.activity.config.xxljob;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;

@@ -13,7 +13,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.grab.degree.activity.ActivityServiceApplication;
-import com.grab.degree.activity.config.ShardJedisClient;
+import com.grab.degree.activity.config.redis.ShardJedisClient;
 import com.grab.degree.common.redis.RedisCache;
 import com.grab.degree.activity.constants.CacheKeyConstants;
 

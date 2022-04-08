@@ -26,7 +26,7 @@ import com.google.common.cache.CacheLoader;
 import com.google.common.cache.LoadingCache;
 import com.grab.degree.activity.service.TopicCourseActivityService;
 import com.grab.degree.common.redis.RedisCache;
-import com.grab.degree.activity.config.ShardJedisClient;
+import com.grab.degree.activity.config.redis.ShardJedisClient;
 import com.grab.degree.activity.constants.CacheKeyConstants;
 import com.grab.degree.activity.dao.TopicCourseActivityDAO;
 import com.grab.degree.activity.domain.entity.TopicCourseActivity;

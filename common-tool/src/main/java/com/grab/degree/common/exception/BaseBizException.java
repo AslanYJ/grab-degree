@@ -12,22 +12,19 @@ import lombok.EqualsAndHashCode;
 @EqualsAndHashCode(callSuper = true)
 @Data
 public class BaseBizException extends RuntimeException{
-    /**
-     * 默认错误码
-     */
-    private static final String DEFAULT_ERROR_CODE = "-1";
+
     
-    private String errorCode;
+    private Integer errorCode;
     
     private String errorMsg;
     
     public BaseBizException(String errorMsg) {
         super(errorMsg);
-        this.errorCode = DEFAULT_ERROR_CODE;
+        this.errorCode = BizCodeEnum.DEFAULT_ERROR_CODE.getErrorCode();
         this.errorMsg = errorMsg;
     }
     
-    public BaseBizException(String errorCode, String errorMsg) {
+    public BaseBizException(Integer errorCode, String errorMsg) {
         super(errorMsg);
         this.errorCode = errorCode;
         this.errorMsg = errorMsg;
@@ -39,7 +36,7 @@ public class BaseBizException extends RuntimeException{
         this.errorMsg = baseErrorCodeEnum.getErrorMsg();
     }
     
-    public BaseBizException(String errorCode, String errorMsg, Object... arguments) {
+    public BaseBizException(Integer errorCode, String errorMsg, Object... arguments) {
         super(MessageFormat.format(errorMsg, arguments));
         this.errorCode = errorCode;
         this.errorMsg = MessageFormat.format(errorMsg, arguments);

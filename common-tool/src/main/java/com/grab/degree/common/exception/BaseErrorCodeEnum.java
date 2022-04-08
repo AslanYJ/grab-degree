@@ -10,7 +10,7 @@ public interface BaseErrorCodeEnum {
      * 返回的code
      * @return code
      */
-    String getErrorCode();
+    Integer getErrorCode();
     
     /**
      * 返回的错误信息

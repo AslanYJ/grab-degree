@@ -1,4 +1,4 @@
-package com.grab.degree.activity.config;
+package com.grab.degree.activity.config.redis;
 
 import java.util.Objects;
 
