@@ -1,4 +1,4 @@
-package com.grab.degree.activity.config.mq;
+package com.grab.degree.activity.config.mq.producer;
 
 import java.nio.charset.StandardCharsets;
 
@@ -11,6 +11,7 @@ import org.apache.rocketmq.common.message.Message;
 import org.apache.rocketmq.spring.autoconfigure.RocketMQProperties;
 import org.springframework.stereotype.Component;
 
+import com.grab.degree.common.constants.RocketMqConstants;
 import com.grab.degree.common.exception.BaseBizException;
 import com.grab.degree.common.exception.BizCodeEnum;
 
@@ -27,7 +28,7 @@ public class DefaultProducer {
     private final DefaultMQProducer producer;
 
     public DefaultProducer(RocketMQProperties rocketMQProperties) {
-        producer = new TransactionMQProducer("default_group");
+        producer = new TransactionMQProducer(RocketMqConstants.GRAB_DEGREE_ACTIVITY_DEFAULT_PRODUCER_GROUP);
         producer.setNamesrvAddr(rocketMQProperties.getNameServer());
         start();
     }
@@ -73,6 +74,30 @@ public class DefaultProducer {
                 msg.setDelayTimeLevel(delayTimeLevel);
             }
             SendResult send = producer.send(msg);
+            if (SendStatus.SEND_OK == send.getSendStatus()) {
+                log.info("发送MQ消息成功, type:{}, message:{}", type, message);
+            } else {
+                throw new BaseBizException(send.getSendStatus().toString());
+            }
+        } catch (Exception e) {
+            log.error("发送MQ消息失败：", e);
+            throw new BaseBizException(BizCodeEnum.MQ_SEND_FAIL.getErrorCode(),
+                    BizCodeEnum.MQ_SEND_FAIL.getErrorMsg());
+        }
+    }
+    
+    public void sendOrderMessage(String topic, String message, Integer delayTimeLevel,
+            String type, String tags, String keys,Long userId) {
+        Message msg = new Message(topic, tags, keys, message.getBytes(StandardCharsets.UTF_8));
+        try {
+            if (delayTimeLevel > 0) {
+                msg.setDelayTimeLevel(delayTimeLevel);
+            }
+            SendResult send = producer.send(msg, (list, message1, o) -> {
+                Long userId1 = (Long) o;
+                long index = userId1 % list.size();
+                return list.get((int) index);
+            }, userId);
             if (SendStatus.SEND_OK == send.getSendStatus()) {
                 log.info("发送MQ消息成功, type:{}, message:{}", type, message);
             } else {

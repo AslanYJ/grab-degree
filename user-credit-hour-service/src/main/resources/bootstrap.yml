@@ -1,0 +1,5 @@
+spring:
+  application:
+    name: user-credit-hour-service
+  profiles:
+    active: local

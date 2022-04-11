@@ -1,9 +1,11 @@
-package com.grab.degree.activity.config.mq;
+package com.grab.degree.activity.config.mq.producer;
 
 import org.apache.rocketmq.client.producer.TransactionMQProducer;
 import org.apache.rocketmq.spring.autoconfigure.RocketMQProperties;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+
+import com.grab.degree.activity.config.mq.AbstractTransactionProducer;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -13,7 +15,7 @@ import lombok.extern.slf4j.Slf4j;
  */
 @Slf4j
 @Component
-public class TranslationProducerDemo extends AbstractTransactionProducer{
+public class TranslationProducerDemo extends AbstractTransactionProducer {
     
     @Autowired
     public TranslationProducerDemo(RocketMQProperties rocketMQProperties) {

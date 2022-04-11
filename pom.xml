@@ -17,6 +17,7 @@
         <module>user-center-api</module>
         <module>user-credit-hour-service</module>
         <module>user-credit-hour-api</module>
+        <module>topic-course-service</module>
     </modules>
 
     <properties>

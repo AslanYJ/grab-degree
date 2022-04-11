@@ -1,0 +1,5 @@
+spring:
+  application:
+    name: topic-course-service
+  profiles:
+    active: local
