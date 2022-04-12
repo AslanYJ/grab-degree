@@ -1,8 +1,9 @@
-package com.yjlan.user.credit.hour.dao;
+package com.yjlan.user.credit.dao;
 
 import com.grab.degree.common.dao.BaseDAO;
-import com.yjlan.user.credit.hour.domain.entity.UserCreditHour;
-import com.yjlan.user.credit.hour.mapper.UserCreditHourMapper;
+import com.yjlan.user.credit.domain.entity.UserCreditHour;
+import com.yjlan.user.credit.mapper.UserCreditHourMapper;
+
 import org.springframework.stereotype.Repository;
 
 /**

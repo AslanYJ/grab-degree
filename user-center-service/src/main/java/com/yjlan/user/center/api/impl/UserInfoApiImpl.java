@@ -29,6 +29,7 @@ public class UserInfoApiImpl implements UserInfoApi {
         }
         UserInfoVO userInfoVO = new UserInfoVO();
         userInfoVO.setUserId(userId);
+        userInfoVO.setAge(1);
         BeanUtils.copyProperties(userInfo,userInfoVO);
         return ResponseResult.success(userInfoVO);
     }

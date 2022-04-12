@@ -37,6 +37,19 @@ spring:
     password:
     timeout: 3000
 
+dubbo:
+  registry:
+    address: nacos://119.29.164.252:8848
+  protocol:
+    name: dubbo
+    port: 28088
+  consumer:
+    check: false
+  provider:
+    threads: 800
+    actives: 200
+  cloud:
+    subscribed-services: topic-course-service
 
 mybatis-plus:
   configuration:
@@ -44,13 +57,7 @@ mybatis-plus:
     map-underscore-to-camel-case: true
   mapper-locations: classpath:mapper/*.xml
 
-xxl:
-  job:
-    admin:
-      addresses: http://localhost:13000/xxl-job-admin
-    executor:
-      appname: topic-course
 
 
 rocketmq:
-  name-server: localhost:9876
+  name-server: 114.132.40.61:9876

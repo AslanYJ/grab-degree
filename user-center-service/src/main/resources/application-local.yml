@@ -51,7 +51,7 @@ dubbo:
   cloud:
     subscribed-services: user-center-service
   scan:
-    base-packages: com.grab.degree.topic.course.api
+    base-packages: com.yjlan.user.center.api
 
 mybatis-plus:
   configuration:

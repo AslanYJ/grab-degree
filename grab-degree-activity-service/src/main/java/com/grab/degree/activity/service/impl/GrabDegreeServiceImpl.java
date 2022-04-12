@@ -2,10 +2,14 @@ package com.grab.degree.activity.service.impl;
 
 import java.util.concurrent.atomic.AtomicLong;
 
+import com.alibaba.fastjson.JSON;
+import com.grab.degree.activity.config.mq.producer.DefaultProducer;
 import com.grab.degree.activity.config.redis.ShardJedisClient;
 import com.grab.degree.activity.constants.CacheKeyConstants;
 import com.grab.degree.activity.domain.dto.GrabDegreeDTO;
+import com.grab.degree.common.constants.RocketMqConstants;
 import com.grab.degree.common.exception.BaseBizException;
+import com.grab.degree.common.message.GrabDegreeActivityMessage;
 import com.grab.degree.common.resp.ResponseResult;
 import com.yjlan.user.center.api.UserInfoApi;
 import com.yjlan.user.center.domain.UserInfoVO;
@@ -37,8 +41,10 @@ public class GrabDegreeServiceImpl implements GrabDegreeService {
 
     @Resource
     private ShardJedisClient shardJedisClient;
-
-
+    
+    @Resource
+    private DefaultProducer defaultProducer;
+    
     @DubboReference(version = "1.0.0")
     private UserCreditHourApi userCreditHourApi;
 
@@ -63,11 +69,18 @@ public class GrabDegreeServiceImpl implements GrabDegreeService {
         // 这里会轮询所有的redis实例
         for (long i = sequence; i <= maxSequence; i++) {
             result = (String) shardJedisClient.eval(i, script);
-            if (result.equals("success")) {
+            if ("success".equals(result)) {
                 // 抢购成功的信息保存到Redis中
                 String checkKey = CacheKeyConstants.buildCheckExistKey(grabDegreeDTO.getUserId(), grabDegreeDTO.getActivityId());
                 shardJedisClient.set(checkKey,"1",7200);
-                // 发送到MQ中,生成学位信息，扣除学时
+                // 发送到MQ中,生成学位信息
+                GrabDegreeActivityMessage message = new GrabDegreeActivityMessage();
+                message.setUserId(grabDegreeDTO.getUserId());
+                message.setActivityId(grabDegreeDTO.getActivityId());
+                message.setCourseId(grabDegreeDTO.getUserId());
+                defaultProducer.sendMessage(RocketMqConstants.GRAB_DEGREE_ACTIVITY_PRODUCER_TOPIC,
+                        JSON.toJSONString(message),"抢购服务抢购成功",null,
+                        String.valueOf(message.getUserId()));
                 log.info("扣除学位成功,sequence:{}",sequence);
                 return true;
             }

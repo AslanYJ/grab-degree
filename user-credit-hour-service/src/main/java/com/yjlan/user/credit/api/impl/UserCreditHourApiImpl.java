@@ -1,9 +1,9 @@
-package com.yjlan.user.credit.hour.api.impl;
+package com.yjlan.user.credit.api.impl;
 
 import com.grab.degree.common.resp.ResponseResult;
 import com.yjlan.user.credit.api.UserCreditHourApi;
 import com.yjlan.user.credit.domain.UserCreditHourInfoVO;
-import com.yjlan.user.credit.hour.dao.UserCreditHourDAO;
+import com.yjlan.user.credit.dao.UserCreditHourDAO;
 import org.apache.dubbo.config.annotation.DubboService;
 
 import javax.annotation.Resource;

@@ -1,7 +1,8 @@
-package com.yjlan.user.credit.hour.mapper;
+package com.yjlan.user.credit.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.yjlan.user.credit.hour.domain.entity.UserCreditHour;
+import com.yjlan.user.credit.domain.entity.UserCreditHour;
+
 import org.apache.ibatis.annotations.Mapper;
 
 /**

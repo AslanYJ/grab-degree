@@ -1,4 +1,4 @@
-package com.yjlan.user.credit.hour;
+package com.yjlan.user.credit;
 
 
 import org.springframework.boot.SpringApplication;

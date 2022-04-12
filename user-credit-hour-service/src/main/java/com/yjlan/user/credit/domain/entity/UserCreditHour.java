@@ -1,4 +1,4 @@
-package com.yjlan.user.credit.hour.domain.entity;
+package com.yjlan.user.credit.domain.entity;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;

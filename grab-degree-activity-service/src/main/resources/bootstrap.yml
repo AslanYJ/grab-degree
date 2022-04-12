@@ -1,5 +1,5 @@
 spring:
   application:
-    name: grab-degree-cms-service
+    name: grab-degree-activity-service
   profiles:
     active: dev
