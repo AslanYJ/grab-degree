@@ -53,6 +53,8 @@ dubbo:
   scan:
     base-packages: com.grab.degree.activity.api
 
+
+
 mybatis-plus:
   configuration:
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
@@ -76,9 +78,8 @@ grab:
       configs:
         - addr: 127.0.0.1:6379
           password:
-        ## 多个redis实例
-        ## - addr:xxxx
-        ## - password:xxx
+        - addr: 10.41.170.165:6389
+          password: IFLYtek@2019
 
 rocketmq:
-  name-server: localhost:9876
+  name-server: http://114.132.40.61:9876

@@ -42,9 +42,9 @@ public class CodeGenerator {
     /**
      * 数据库链接配置
      */
-    private final static String jdbcUrl = "jdbc:mysql://cdb-6op2eovc.cd.tencentcdb.com:10063/dev??useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=Asia/Shanghai";
+    private final static String jdbcUrl = "jdbc:mysql://localhost:3306/dev??useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=Asia/Shanghai";
     private final static String jdbcUserName = "root";
-    private final static String jdbcPwd = "aaBBcJ123456qwe";
+    private final static String jdbcPwd = "root";
     private final static String moduleName = "cms";
 
 
