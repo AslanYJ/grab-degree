@@ -53,9 +53,12 @@
             <version>2.6</version>
         </dependency>
 
+
+        <!-- mybatis -->
         <dependency>
             <groupId>com.baomidou</groupId>
             <artifactId>mybatis-plus-boot-starter</artifactId>
+            <version>3.4.3</version>
         </dependency>
 
         <!-- json处理相关的依赖 -->
@@ -111,17 +114,17 @@
             <version>1.9.6</version>
         </dependency>
 
-<!--        &lt;!&ndash;shardingsphere&ndash;&gt;-->
-<!--        <dependency>-->
-<!--            <groupId>org.apache.shardingsphere</groupId>-->
-<!--            <artifactId>sharding-jdbc-spring-boot-starter</artifactId>-->
-<!--            <version>4.0.0-RC1</version>-->
-<!--        </dependency>-->
-<!--        <dependency>-->
-<!--            <groupId>org.apache.shardingsphere</groupId>-->
-<!--            <artifactId>sharding-jdbc-spring-namespace</artifactId>-->
-<!--            <version>4.0.0-RC1</version>-->
-<!--        </dependency>-->
+        <!--shardingsphere-->
+        <dependency>
+            <groupId>org.apache.shardingsphere</groupId>
+            <artifactId>sharding-jdbc-spring-boot-starter</artifactId>
+            <version>4.0.0-RC1</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.shardingsphere</groupId>
+            <artifactId>sharding-jdbc-spring-namespace</artifactId>
+            <version>4.0.0-RC1</version>
+        </dependency>
 
         <dependency>
             <groupId>junit</groupId>

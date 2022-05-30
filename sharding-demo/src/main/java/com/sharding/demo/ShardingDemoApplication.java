@@ -1,5 +1,6 @@
 package com.sharding.demo;
 
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
@@ -10,7 +11,8 @@ import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
  * @Description (这里用一句话描述这个类的作用)
  * @date 2022.05.26 20:16
  */
-@SpringBootApplication(exclude = DataSourceAutoConfiguration.class)
+@SpringBootApplication
+@MapperScan(basePackages = "com.sharding.demo.**.mapper")
 public class ShardingDemoApplication {
     
     public static void main(String[] args) {
